@@ -1,0 +1,89 @@
+/* Colours follow Blimp: black and warm yellow in dark mode, cream and amber in light mode. */
+:root {
+  --bg: #f8f7f2;
+  --surface: #ffffff;
+  --surface-high: #f0eee5;
+  --text: #15140f;
+  --text-2: #5c5848;
+  --text-3: #7a7564;
+  --line: #e7e3d4;
+  --accent: #8a6100;
+  --accent-soft: #fdf3c8;
+  --brand: #facc15;
+  --on-brand: #1f1a00;
+  --shadow: 0 24px 60px rgba(60, 50, 10, .18);
+  --glow: rgba(250, 204, 21, .22);
+  --max: 1120px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000;
+    --surface: #0f0f0f;
+    --surface-high: #1c1c1c;
+    --text: #fff;
+    --text-2: #adadad;
+    --text-3: #858585;
+    --line: rgba(255, 255, 255, .08);
+    --accent: #facc15;
+    --accent-soft: rgba(250, 204, 21, .18);
+    --shadow: 0 30px 80px rgba(0, 0, 0, .8);
+    --glow: rgba(250, 204, 21, .14);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000;
+  --surface: #0f0f0f;
+  --surface-high: #1c1c1c;
+  --text: #fff;
+  --text-2: #adadad;
+  --text-3: #858585;
+  --line: rgba(255, 255, 255, .08);
+  --accent: #facc15;
+  --accent-soft: rgba(250, 204, 21, .18);
+  --shadow: 0 30px 80px rgba(0, 0, 0, .8);
+  --glow: rgba(250, 204, 21, .14);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+/* Leaves room for the sticky header when jumping to an #anchor. */
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
+
+/* Crossfades between pages instead of flashing white. The header has its own
+   transition name, so it stays still while the page under it changes. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+a { color: var(--accent); }
+img { max-width: 100%; height: auto; display: block; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--brand); color: var(--on-brand);
+  font-weight: 700; font-size: 18px; text-decoration: none;
+  padding: 15px 28px; border-radius: 999px;
+  box-shadow: 0 10px 36px rgba(250, 204, 21, .25);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 44px rgba(250, 204, 21, .35); }
+.btn svg { width: 20px; height: 20px; }
+.btn.secondary { background: var(--surface-high); color: var(--text); box-shadow: none; border: 1px solid var(--line); }
+
+.chip {
+  display: inline-block; font-size: 13px; font-weight: 600;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 4px 12px; border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}

@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { links } from '../site';
+---
+
+<Base
+  title="About: BersamaMus"
+  description="About Mustaqim, the developer behind BersamaMus."
+  section="about"
+>
+  <section class="about">
+    <div class="wrap">
+      <h1>About me</h1>
+      <div class="about-grid">
+        <div class="bio">
+          <p>
+            I'm Mustaqim, I develop apps for Android and Windows.
+          </p>
+          <p>
+            My goal is to make apps/software that can make many people's lives easier, because what would be my purpose, if not to provide.
+            I take inspirations from many different existing systems, taking what I think is the best and implement them into my projects.
+          </p>
+          <p>I have many project ideas, but for now, I will be developing and maintaining:</p>
+          <ol>
+            <li>A lightweight and sleek offline music player</li>
+            <li>A powerful offline video player</li>
+            <li>A user-friendly and easy-to-use image viewer</li>
+            <li>A capable video editor designed for both the average user and the power users</li>
+          </ol>
+        </div>
+        <aside class="links">
+          <a class="link-card" href={links.youtube}>
+            <span class="link-icon youtube" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg>
+            </span>
+            <span>
+              <strong>YouTube</strong>
+              <small>Watch my videos</small>
+            </span>
+          </a>
+          <a class="link-card" href="/projects">
+            <span class="link-icon projects" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+            </span>
+            <span>
+              <strong>Projects</strong>
+              <small>View my work</small>
+            </span>
+          </a>
+          <a class="link-card" href={links.github}>
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+            </span>
+            <span>
+              <strong>GitHub</strong>
+              <small>See my code</small>
+            </span>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <p class="sub">
+        Suggestions, bug reports, networking, or just some chit-chat: send me a message and I'll
+        reply by email.
+      </p>
+      <ContactForm />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about { padding-top: 56px; }
+  h1 { font-size: clamp(32px, 5vw, 44px); letter-spacing: -1px; margin: 0 0 28px; }
+  .about-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+  .bio { font-size: 17px; line-height: 1.7; color: var(--text-2); max-width: 44rem; }
+  .bio p { margin: 0 0 16px; }
+  .bio ol { margin: 0 0 16px; padding-left: 1.4em; display: grid; gap: 6px; }
+  .bio li::marker { color: var(--accent); font-weight: 600; }
+  .links { display: grid; gap: 12px; }
+  .link-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px 18px; color: inherit; text-decoration: none;
+    transition: border-color .15s;
+  }
+  .link-card:hover { border-color: var(--accent); }
+  .link-card strong { display: block; }
+  .link-card small { color: var(--text-3); font-size: 14px; }
+  .link-icon {
+    width: 40px; height: 40px; flex: none; border-radius: 10px;
+    display: grid; place-items: center;
+    background: var(--surface-high); color: var(--text);
+  }
+  .link-icon svg { width: 22px; height: 22px; }
+  .link-icon.youtube { background: #ff0033; color: #fff; }
+  .link-icon.projects { background: var(--accent-soft); color: var(--accent); }
+
+  .contact { padding-top: 72px; }
+  h2 { font-size: clamp(24px, 4vw, 32px); letter-spacing: -.5px; margin: 0 0 8px; }
+  .sub { color: var(--text-2); margin: 0 0 24px; max-width: 40rem; }
+
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-card { transition: none; }
+  }
+</style>
