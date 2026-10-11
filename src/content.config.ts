@@ -20,6 +20,8 @@ const projects = defineCollection({
       order: z.number().default(100),
       // True when the project has a hand-built page in src/pages/<id>/.
       customPage: z.boolean().default(false),
+      // The app's own colour, for its card's chips: the site's yellow, or Vessel's purple.
+      accent: z.enum(['yellow', 'purple']).default('yellow'),
     }),
 });
 
