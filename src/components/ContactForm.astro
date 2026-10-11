@@ -1,0 +1,91 @@
+---
+// A contact form that emails messages to me through Web3Forms, so my address
+// never appears on the site. Works without JavaScript too: the browser then
+// shows Web3Forms' own "sent" page instead of the message under the button.
+import { web3formsKey } from '../site';
+---
+
+<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value={web3formsKey} />
+  <input type="hidden" name="subject" value="New message from bersamamus.com" />
+  <input type="hidden" name="from_name" value="bersamamus.com" />
+  <!-- Bots tick every box they find; Web3Forms drops messages with this one ticked. -->
+  <input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="row">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required maxlength="100" autocomplete="name" />
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" required maxlength="200" autocomplete="email" />
+    </label>
+  </div>
+  <label>
+    <span>Message</span>
+    <textarea name="message" required rows="6" maxlength="5000"></textarea>
+  </label>
+
+  <div class="actions">
+    <button class="btn" type="submit">Send message</button>
+    <p class="status" role="status" aria-live="polite"></p>
+  </div>
+</form>
+
+<script>
+  // Sends the form in the background and shows the result under the button.
+  for (const form of document.querySelectorAll<HTMLFormElement>('.contact-form')) {
+    const button = form.querySelector('button')!;
+    const status = form.querySelector('.status')!;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.textContent = '';
+      status.className = 'status';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        const result = await response.json();
+        if (!result.success) throw new Error(result.message);
+        form.reset();
+        status.textContent = "Thanks! Your message is on its way. I'll reply by email.";
+        status.classList.add('ok');
+      } catch {
+        status.textContent = "Sorry, your message couldn't be sent. Please try again in a moment.";
+        status.classList.add('error');
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send message';
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact-form { display: grid; gap: 16px; max-width: 40rem; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; }
+  label { display: grid; gap: 6px; }
+  label span { font-size: 14px; font-weight: 600; color: var(--text-2); }
+  input, textarea {
+    width: 100%; font: inherit; color: var(--text);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 12px 14px;
+  }
+  textarea { resize: vertical; min-height: 140px; }
+  input:focus-visible, textarea:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; border-color: transparent; }
+  .trap { display: none; }
+
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .btn { border: 0; cursor: pointer; font-family: inherit; }
+  .btn:disabled { opacity: .6; cursor: progress; transform: none; }
+  .status { margin: 0; color: var(--text-2); }
+  .status.ok { color: var(--accent); }
+  .status.error { color: #e5484d; }
+</style>

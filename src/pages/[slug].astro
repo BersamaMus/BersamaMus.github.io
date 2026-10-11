@@ -1,0 +1,41 @@
+---
+// The page for any project that doesn't have its own page in src/pages.
+// Its text comes from the project's Markdown file.
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', (p) => !p.data.customPage);
+  return projects.map((p) => ({ params: { slug: p.id }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+---
+
+<Base title={`${data.title}: ${data.tagline}`} description={data.tagline} image={data.cover.src} section="projects">
+  <article class="wrap">
+    <header>
+      <Image src={data.icon} alt="" width={56} height={56} />
+      <h1>{data.title}</h1>
+      <p class="lead">{data.tagline}</p>
+      <div class="chips">{data.platforms.map((x) => <span class="chip">{x}</span>)}</div>
+      {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
+    </header>
+    <Image class="shot" src={data.cover} alt={data.coverAlt} />
+    <div class="prose"><Content /></div>
+  </article>
+</Base>
+
+<style>
+  article { padding-top: 56px; }
+  header { display: grid; justify-items: start; gap: 14px; }
+  header img { border-radius: 12px; }
+  h1 { font-size: clamp(36px, 7vw, 56px); letter-spacing: -1px; margin: 0; }
+  .lead { color: var(--text-2); font-size: 20px; max-width: 640px; margin: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .shot { margin-top: 40px; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+  .prose { max-width: 44rem; margin-top: 40px; font-size: 17px; line-height: 1.65; }
+</style>

@@ -1,0 +1,109 @@
+---
+import '../styles/global.css';
+import { links } from '../site';
+
+interface Props {
+  title: string;
+  description: string;
+  // Absolute or root-relative URL of the image shown when the page is shared.
+  image?: string;
+  favicon?: string;
+  // Which header link to highlight. Project pages count as "projects".
+  section?: 'projects' | 'about';
+}
+
+const { title, description, image, favicon = '/favicon.svg', section } = Astro.props;
+const current = (name: Props['section']) => (name === section ? 'page' : undefined);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site) : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={favicon} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8f7f2" media="(prefers-color-scheme: light)" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">
+          <img src="/favicon.svg" alt="" width="28" height="28" />
+          <span>BersamaMus</span>
+        </a>
+        <nav>
+          <a href="/about" aria-current={current('about')}>About</a>
+          <a href="/projects" aria-current={current('projects')}>Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© {new Date().getFullYear()} BersamaMus</span>
+        <span>
+          <slot name="footer-links" />
+          <a href={links.youtube}>YouTube</a>
+          <a href={links.github}>GitHub</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* Keeps the footer at the bottom of short pages. */
+  body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+  main { flex: 1; }
+
+  /* Stays at the top while the page scrolls under it. */
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    view-transition-name: site-header;
+  }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    height: 72px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--text); text-decoration: none; font-weight: 700; font-size: 20px;
+  }
+  .brand img { border-radius: 7px; }
+  nav { display: flex; gap: 20px; }
+  nav a { color: var(--text-2); text-decoration: none; font-size: 15px; }
+  nav a:hover { color: var(--text); }
+  nav a[aria-current="page"] {
+    color: var(--text); font-weight: 600;
+    text-decoration: underline; text-decoration-color: var(--brand);
+    text-decoration-thickness: 2px; text-underline-offset: 8px;
+  }
+
+  .site-footer { border-top: 1px solid var(--line); color: var(--text-3); font-size: 14px; margin-top: 96px; }
+  .site-footer .wrap {
+    display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between;
+    padding-top: 28px; padding-bottom: 28px;
+  }
+  .site-footer span { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .site-footer :global(a) { color: var(--text-2); text-decoration: none; }
+  .site-footer :global(a:hover) { color: var(--text); }
+</style>

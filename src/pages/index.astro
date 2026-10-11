@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="BersamaMus: apps by Mustaqim"
+  description="Apps for Android and Windows, built by Mustaqim. Clean, private and made with care."
+>
+  <section class="intro">
+    <div class="wrap">
+      <h1>Hi, I'm Mustaqim.<br /><span> I build apps.</span></h1>
+      <p class="lead">
+        I make offline apps for Android and Windows, with no ads, no internet requirements, and no tracking.
+      </p>
+      <div class="cta">
+        <a class="btn secondary" href="/about">About me</a>
+        <a class="btn" href="/projects">See my projects</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro {
+    padding: 96px 0 0;
+    background: radial-gradient(700px 360px at 20% 0, var(--glow), transparent 70%);
+  }
+  h1 { font-size: clamp(36px, 7vw, 64px); line-height: 1.08; letter-spacing: -1.5px; margin: 0; }
+  h1 span { color: var(--accent); }
+  .lead { color: var(--text-2); font-size: clamp(17px, 2.4vw, 20px); max-width: 620px; margin: 20px 0 0; }
+  .cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+</style>
