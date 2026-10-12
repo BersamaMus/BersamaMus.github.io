@@ -60,6 +60,7 @@ const ogImage = image ? new URL(image, Astro.site) : undefined;
           <slot name="footer-links" />
           <a href={links.youtube}>YouTube</a>
           <a href={links.github}>GitHub</a>
+          {links.support && <a href={links.support}>Support me on Ko-fi</a>}
         </span>
       </div>
     </footer>

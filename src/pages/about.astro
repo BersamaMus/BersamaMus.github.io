@@ -50,6 +50,17 @@ import { links } from '../site';
               <small>See my code</small>
             </span>
           </a>
+          {links.support && (
+            <a class="link-card" href={links.support}>
+              <span class="link-icon kofi" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6zM17 9h1.5a2.5 2.5 0 0 1 0 5H17M8 3v2M12 3v2"/></svg>
+              </span>
+              <span>
+                <strong>Ko-fi</strong>
+                <small>Support my work</small>
+              </span>
+            </a>
+          )}
         </aside>
       </div>
     </div>
@@ -93,6 +104,7 @@ import { links } from '../site';
   .link-icon svg { width: 22px; height: 22px; }
   .link-icon.youtube { background: #ff0033; color: #fff; }
   .link-icon.projects { background: var(--accent-soft); color: var(--accent); }
+  .link-icon.kofi { background: #72a4f2; color: #fff; }
 
   .contact { padding-top: 72px; }
   h2 { font-size: clamp(24px, 4vw, 32px); letter-spacing: -.5px; margin: 0 0 8px; }
