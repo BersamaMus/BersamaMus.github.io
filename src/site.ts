@@ -2,8 +2,8 @@
 export const links = {
   github: 'https://github.com/BersamaMus',
   youtube: 'https://www.youtube.com/@BersamaMus',
-  // Your tip page (Ko-fi, Buy Me a Coffee, etc.). Blimp's page shows
-  // "Support Blimp" links only once this is filled in.
+  // Your tip page. Shown in every page's footer, on About, and on Blimp's page.
+  // Leave it empty to hide all of them.
   support: 'https://ko-fi.com/bersamamus',
 };
 
