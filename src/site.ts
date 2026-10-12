@@ -4,7 +4,7 @@ export const links = {
   youtube: 'https://www.youtube.com/@BersamaMus',
   // Your tip page (Ko-fi, Buy Me a Coffee, etc.). Blimp's page shows
   // "Support Blimp" links only once this is filled in.
-  support: '',
+  support: 'https://ko-fi.com/bersamamus',
 };
 
 // The contact form sends messages through Web3Forms, which emails them to you.
