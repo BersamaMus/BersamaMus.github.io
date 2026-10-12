@@ -2,15 +2,51 @@
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import jetiIcon from '../assets/jeti/icon.png';
+import jetiShot from '../assets/jeti/windows-home.png';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Jeti, the launcher, isn't one of the projects: it installs and updates them
+// (from /apps.json), so it gets its own place above them.
+const jetiRepo = 'https://github.com/BersamaMus/Jeti';
+const jetiDownload = `${jetiRepo}/releases/latest/download/Jeti-Setup.exe`;
 ---
 
 <Base
   title="Projects: BersamaMus"
-  description="Apps for Android and Windows built by Mustaqim."
+  description="Apps for Android and Windows built by Mustaqim, and Jeti, which installs and updates them on Windows."
   section="projects"
 >
+  <section class="jeti">
+    <div class="wrap">
+      <div class="launcher">
+        <div class="pitch">
+          <p class="name"><Image src={jetiIcon} alt="" width={36} height={36} />Jeti</p>
+          <h2 class="headline">All my apps.<br /><span>Always up to date.</span></h2>
+          <p class="lead">
+            Jeti installs my Windows apps in one click, and tells you when there's a new version.
+            One more click and it's updated.
+          </p>
+          <div class="cta">
+            <a class="btn" href={jetiDownload}>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
+              Download Jeti
+            </a>
+            <small><span id="jeti-version">Free</span> · Windows 10 and 11, 64-bit · <a href={jetiRepo}>Source on GitHub</a></small>
+          </div>
+        </div>
+        <Image
+          class="shot"
+          src={jetiShot}
+          alt="Jeti on Windows, showing Blimp and Vessel installed and up to date, each with an Open button"
+          width={1000}
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
   <section class="projects">
     <div class="wrap">
       <h1>Projects</h1>
@@ -36,7 +72,54 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   </section>
 </Base>
 
+<script>
+  // Shows Jeti's newest version next to its download button.
+  fetch('https://api.github.com/repos/BersamaMus/Jeti/releases/latest')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((r) => {
+      const el = document.getElementById('jeti-version');
+      if (el && r && r.tag_name) el.textContent = 'Free · ' + r.tag_name;
+    })
+    .catch(() => {});
+</script>
+
 <style>
+  /* Jeti's green, as in the app. */
+  .jeti {
+    --accent: #15803d; --accent-soft: #dcfce7;
+    --brand: #4ade80; --on-brand: #052e16; --glow: rgba(74, 222, 128, .22);
+    padding-top: 56px;
+    background: radial-gradient(700px 360px at 20% 0, var(--glow), transparent 70%);
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme="light"])) .jeti { --accent: #4ade80; --accent-soft: rgba(74, 222, 128, .16); --glow: rgba(74, 222, 128, .12); }
+  }
+  :global(:root[data-theme="dark"]) .jeti { --accent: #4ade80; --accent-soft: rgba(74, 222, 128, .16); --glow: rgba(74, 222, 128, .12); }
+
+  .launcher {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px; align-items: center;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+    padding: 40px;
+  }
+  .name {
+    display: inline-flex; align-items: center; gap: 10px; margin: 0 0 16px;
+    font-weight: 700; font-size: 20px;
+  }
+  .name img { border-radius: 9px; }
+  .headline { font-size: clamp(30px, 4.4vw, 44px); line-height: 1.1; letter-spacing: -1px; margin: 0; }
+  .headline span { color: var(--accent); }
+  .lead { color: var(--text-2); font-size: 18px; margin: 16px 0 0; }
+  .cta { margin-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .cta .btn { box-shadow: 0 10px 36px rgba(74, 222, 128, .25); }
+  .cta .btn:hover { box-shadow: 0 14px 44px rgba(74, 222, 128, .35); }
+  .cta small { color: var(--text-3); font-size: 14px; }
+  .cta small a { color: var(--text-2); }
+  .shot { width: 100%; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+
+  @media (max-width: 860px) {
+    .launcher { grid-template-columns: 1fr; padding: 28px 20px; gap: 28px; }
+  }
+
   .projects { padding-top: 56px; }
   h1 { font-size: clamp(32px, 5vw, 44px); letter-spacing: -1px; margin: 0 0 28px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 20px; }
