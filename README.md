@@ -15,6 +15,10 @@ npm run build    # writes the site to dist/
    The home page gets a card, and `/<project>` gets a page built from the Markdown.
 3. For a hand-built page like Blimp's, set `customPage: true` and create
    `src/pages/<project>/index.astro`.
+4. If it has a Windows installer on its GitHub releases, add a `windows:` block
+   (its Inno Setup `appId`, the `installer` asset's name and its `exe`; see
+   `blimp.md`). It's then listed in `/apps.json`, and Jeti, the launcher,
+   offers to install and update it.
 
 ## Deploying
 

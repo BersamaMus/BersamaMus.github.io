@@ -7,6 +7,10 @@ coverAlt: Blimp on Windows, showing Quick picks, recently played albums and the 
 platforms: [Windows, Android]
 tech: [Flutter, Dart, just_audio, media_kit]
 github: https://github.com/BersamaMus/Blimp
+windows:
+  appId: F6B5CA3D-C1D6-43EE-8494-EEB7F8CC522B
+  installer: Blimp-Setup.exe
+  exe: blimp.exe
 order: 1
 customPage: true
 ---
