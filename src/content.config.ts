@@ -13,6 +13,17 @@ const projects = defineCollection({
       icon: image(),
       cover: image(),
       coverAlt: z.string(),
+      // More screenshots, shown under the text, each with a heading and a line about it.
+      shots: z
+        .array(
+          z.object({
+            src: image(),
+            alt: z.string(),
+            title: z.string(),
+            caption: z.string(),
+          }),
+        )
+        .default([]),
       platforms: z.array(z.string()),
       tech: z.array(z.string()),
       github: z.string().optional(),
@@ -33,8 +44,9 @@ const projects = defineCollection({
       order: z.number().default(100),
       // True when the project has a hand-built page in src/pages/<id>/.
       customPage: z.boolean().default(false),
-      // The app's own colour, for its card's chips: the site's yellow, or Vessel's purple.
-      accent: z.enum(['yellow', 'purple']).default('yellow'),
+      // The app's own colour, for its card and page: the outline, the Download button
+      // and the chips. The site's yellow (Blimp), Vessel's purple, or Glide's turquoise.
+      accent: z.enum(['yellow', 'purple', 'turquoise']).default('yellow'),
     }),
 });
 

@@ -15,10 +15,14 @@ const { data } = project;
 const { Content } = await render(project);
 // Its installer from the newest GitHub release, for an app with one.
 const download = data.windows && data.github && `${data.github}/releases/latest/download/${data.windows.installer}`;
+// Screenshots fill the page's column (1120px less its 16px gutters), so phones
+// get a smaller copy instead of the full-size original.
+const shotWidths = [720, 1120, 1600];
+const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
 ---
 
 <Base title={`${data.title}: ${data.tagline}`} description={data.tagline} image={data.cover.src} section="projects">
-  <article class="wrap">
+  <article class={`wrap accent-${data.accent}`}>
     <header>
       <Image src={data.icon} alt="" width={56} height={56} />
       <h1>{data.title}</h1>
@@ -34,19 +38,39 @@ const download = data.windows && data.github && `${data.github}/releases/latest/
         {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
       </div>
     </header>
-    <Image class="shot" src={data.cover} alt={data.coverAlt} />
+    <Image class="shot" src={data.cover} alt={data.coverAlt} widths={shotWidths} sizes={shotSizes} />
     <div class="prose"><Content /></div>
+    {data.shots.length > 0 && (
+      <section class="shots">
+        <h2>A closer look</h2>
+        {data.shots.map((s) => (
+          <figure>
+            <Image class="shot" src={s.src} alt={s.alt} widths={shotWidths} sizes={shotSizes} />
+            <figcaption><b>{s.title}</b> {s.caption}</figcaption>
+          </figure>
+        ))}
+      </section>
+    )}
   </article>
 </Base>
 
 <style>
   article { padding-top: 56px; }
-  header { display: grid; justify-items: start; gap: 14px; }
+  /* Centred like Blimp's and Vessel's pages. */
+  header { display: grid; justify-items: center; text-align: center; gap: 14px; }
   header img { border-radius: 12px; }
   h1 { font-size: clamp(36px, 7vw, 56px); letter-spacing: -1px; margin: 0; }
   .lead { color: var(--text-2); font-size: 20px; max-width: 640px; margin: 0; }
+  .chips, .actions { justify-content: center; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .shot { margin-top: 40px; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
-  .prose { max-width: 44rem; margin-top: 40px; font-size: 17px; line-height: 1.65; }
+  /* The text stays left-aligned, easier to read, in a column in the middle. */
+  .prose { max-width: 44rem; margin: 40px auto 0; font-size: 17px; line-height: 1.65; }
+  .shots { margin-top: 72px; display: grid; gap: 56px; }
+  .shots h2 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -.5px; margin: 0 0 -24px; text-align: center; }
+  figure { margin: 0; }
+  figure .shot { margin-top: 0; }
+  figcaption { color: var(--text-2); margin: 14px auto 0; max-width: 44rem; font-size: 16px; text-align: center; }
+  figcaption b { color: var(--text); font-weight: 600; }
 </style>

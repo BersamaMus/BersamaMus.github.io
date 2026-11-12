@@ -17,7 +17,7 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
   favicon={icon.src}
   section="projects"
 >
-  <div class="vessel">
+  <div class="vessel accent-purple">
     <div class="hero">
       <div class="wrap">
         <p class="name"><Image src={icon} alt="" width={36} height={36} />Vessel</p>
@@ -149,28 +149,7 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
 </script>
 
 <style>
-  /* Vessel's own colour, light purple, in place of the site's yellow. */
-  .vessel {
-    --accent: #6d3fc0;
-    --accent-soft: #efe6ff;
-    --brand: #c9a7ff;
-    --on-brand: #1e0b3d;
-    --glow: rgba(201, 167, 255, .3);
-  }
-  @media (prefers-color-scheme: dark) {
-    :global(:root:not([data-theme="light"])) .vessel {
-      --accent: #c9a7ff;
-      --accent-soft: rgba(201, 167, 255, .18);
-      --glow: rgba(201, 167, 255, .16);
-    }
-  }
-  :global(:root[data-theme="dark"]) .vessel {
-    --accent: #c9a7ff;
-    --accent-soft: rgba(201, 167, 255, .18);
-    --glow: rgba(201, 167, 255, .16);
-  }
-  .vessel .btn { box-shadow: 0 10px 36px rgba(201, 167, 255, .25); }
-  .vessel .btn:hover { box-shadow: 0 14px 44px rgba(201, 167, 255, .35); }
+  /* Vessel's own colour, light purple, comes from .accent-purple in global.css. */
 
   .hero {
     text-align: center;
@@ -191,7 +170,7 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
   .shot {
     display: block; margin: 48px auto 0; width: 100%; max-width: 1000px; height: auto;
     border-radius: 12px; border: 1px solid var(--line);
-    box-shadow: var(--shadow), 0 0 0 1px rgba(201, 167, 255, .06);
+    box-shadow: var(--shadow), 0 0 0 1px rgba(var(--brand-rgb), .06);
   }
 
   section { padding: 88px 0 0; }

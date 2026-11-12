@@ -11,6 +11,7 @@
   --accent-soft: #fdf3c8;
   --brand: #facc15;
   --on-brand: #1f1a00;
+  --brand-rgb: 250, 204, 21;
   --shadow: 0 24px 60px rgba(60, 50, 10, .18);
   --glow: rgba(250, 204, 21, .22);
   --max: 1120px;
@@ -71,10 +72,10 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--brand); color: var(--on-brand);
   font-weight: 700; font-size: 18px; text-decoration: none;
   padding: 15px 28px; border-radius: 999px;
-  box-shadow: 0 10px 36px rgba(250, 204, 21, .25);
+  box-shadow: 0 10px 36px rgba(var(--brand-rgb), .25);
   transition: transform .15s, box-shadow .15s;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 44px rgba(250, 204, 21, .35); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 44px rgba(var(--brand-rgb), .35); }
 .btn svg { width: 20px; height: 20px; }
 .btn.secondary { background: var(--surface-high); color: var(--text); box-shadow: none; border: 1px solid var(--line); }
 
@@ -83,6 +84,33 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--accent); background: var(--accent-soft);
   padding: 4px 12px; border-radius: 999px;
 }
+
+/* An app's own colour in place of the site's yellow, for its card on Projects and
+   its page: the outline, the Download button and the platform chips. */
+.accent-purple {
+  --accent: #6d3fc0; --accent-soft: #efe6ff;
+  --brand: #c9a7ff; --on-brand: #1e0b3d; --brand-rgb: 201, 167, 255;
+  --glow: rgba(201, 167, 255, .3);
+}
+.accent-turquoise {
+  --accent: #0f766e; --accent-soft: #ccfbf1;
+  --brand: #5eead4; --on-brand: #042f2a; --brand-rgb: 94, 234, 212;
+  --glow: rgba(94, 234, 212, .22);
+}
+/* Jeti's green, as in the app. */
+.accent-green {
+  --accent: #15803d; --accent-soft: #dcfce7;
+  --brand: #4ade80; --on-brand: #052e16; --brand-rgb: 74, 222, 128;
+  --glow: rgba(74, 222, 128, .22);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .accent-purple { --accent: #c9a7ff; --accent-soft: rgba(201, 167, 255, .18); --glow: rgba(201, 167, 255, .16); }
+  :root:not([data-theme="light"]) .accent-turquoise { --accent: #5eead4; --accent-soft: rgba(94, 234, 212, .18); --glow: rgba(94, 234, 212, .14); }
+  :root:not([data-theme="light"]) .accent-green { --accent: #4ade80; --accent-soft: rgba(74, 222, 128, .16); --glow: rgba(74, 222, 128, .12); }
+}
+:root[data-theme="dark"] .accent-purple { --accent: #c9a7ff; --accent-soft: rgba(201, 167, 255, .18); --glow: rgba(201, 167, 255, .16); }
+:root[data-theme="dark"] .accent-turquoise { --accent: #5eead4; --accent-soft: rgba(94, 234, 212, .18); --glow: rgba(94, 234, 212, .14); }
+:root[data-theme="dark"] .accent-green { --accent: #4ade80; --accent-soft: rgba(74, 222, 128, .16); --glow: rgba(74, 222, 128, .12); }
 
 @media (prefers-reduced-motion: reduce) {
   .btn { transition: none; }
