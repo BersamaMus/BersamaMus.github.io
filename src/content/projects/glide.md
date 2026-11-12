@@ -1,6 +1,7 @@
 ---
 title: Glide
 tagline: A photo viewer that shows every picture on your PC, drives and phone, newest first by month.
+headline: [Your photos., Every one of them.]
 icon: ../../assets/glide/icon.png
 cover: ../../assets/glide/windows-home.png
 coverAlt: Glide on Windows, showing trips to Venice, Rome and the Italian coast grouped by month, newest first, with a photo of Capri open beside them and its date taken and camera below
@@ -51,6 +52,7 @@ shots:
     caption: Pick a few pictures and choose a layout, a shape, the spacing, the corners and a background.
     how: Select 2 to 9 pictures, then choose Collage under the preview.
 platforms: [Windows]
+requirements: Windows 10 and 11, 64-bit
 tech: [Flutter, Dart, C++, ONNX Runtime]
 github: https://github.com/BersamaMus/Glide
 windows:

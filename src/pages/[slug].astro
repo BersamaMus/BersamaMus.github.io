@@ -1,6 +1,6 @@
 ---
 // The page for any project that doesn't have its own page in src/pages.
-// Its text comes from the project's Markdown file.
+// Its text comes from the project's Markdown file, set like Blimp's and Vessel's pages.
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
@@ -15,62 +15,125 @@ const { data } = project;
 const { Content } = await render(project);
 // Its installer from the newest GitHub release, for an app with one.
 const download = data.windows && data.github && `${data.github}/releases/latest/download/${data.windows.installer}`;
+// owner/repo, to show the newest version next to the download button.
+const repoPath = data.github?.replace('https://github.com/', '');
 // Screenshots fill the page's column (1120px less its 16px gutters), so phones
 // get a smaller copy instead of the full-size original.
 const shotWidths = [720, 1120, 1600];
 const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
 ---
 
-<Base title={`${data.title}: ${data.tagline}`} description={data.tagline} image={data.cover.src} section="projects">
-  <article class={`wrap accent-${data.accent}`}>
-    <header>
-      <Image src={data.icon} alt="" width={56} height={56} />
-      <h1>{data.title}</h1>
-      <p class="lead">{data.tagline}</p>
-      <div class="chips">{data.platforms.map((x) => <span class="chip">{x}</span>)}</div>
-      <div class="actions">
-        {download && (
-          <a class="btn" href={download}>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
-            Download for Windows
-          </a>
+<Base title={`${data.title}: ${data.tagline}`} description={data.tagline} image={data.cover.src} favicon={data.icon.src} section="projects">
+  <div class={`accent-${data.accent}`}>
+    <div class="hero">
+      <div class="wrap">
+        {data.headline ? (
+          <>
+            <p class="name"><Image src={data.icon} alt="" width={36} height={36} />{data.title}</p>
+            <h1>{data.headline[0]}<br /><span>{data.headline[1]}</span></h1>
+          </>
+        ) : (
+          <>
+            <Image class="icon" src={data.icon} alt="" width={56} height={56} />
+            <h1>{data.title}</h1>
+          </>
         )}
-        {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
+        <p class="lead">{data.tagline}</p>
+        <div class="cta">
+          <div class="buttons">
+            {download && (
+              <a class="btn" href={download}>
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
+                Download for Windows
+              </a>
+            )}
+            {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
+          </div>
+          <small>
+            <span id="version" data-repo={download ? repoPath : undefined}>Free</span> · {data.requirements ?? data.platforms.join(', ')}
+            {data.github && <> · <a href={`${data.github}/releases`}>All releases</a></>}
+          </small>
+        </div>
+        <Image class="shot" src={data.cover} alt={data.coverAlt} widths={shotWidths} sizes={shotSizes} loading="eager" />
       </div>
-    </header>
-    <Image class="shot" src={data.cover} alt={data.coverAlt} widths={shotWidths} sizes={shotSizes} />
-    <div class="prose"><Content /></div>
-    {data.shots.length > 0 && (
-      <section class="shots">
-        <h2>A closer look</h2>
-        {data.shots.map((s) => (
-          <figure>
-            <Image class="shot" src={s.src} alt={s.alt} widths={shotWidths} sizes={shotSizes} />
-            <figcaption>
-              <b>{s.title}</b> {s.caption}
-              {s.how && <span class="how"><span>How:</span> {s.how}</span>}
-            </figcaption>
-          </figure>
-        ))}
-      </section>
-    )}
-  </article>
+    </div>
+
+    <div class="wrap">
+      <div class="prose"><Content /></div>
+      {data.shots.length > 0 && (
+        <section class="shots">
+          <h2>A closer look</h2>
+          {data.shots.map((s) => (
+            <figure>
+              <Image class="shot" src={s.src} alt={s.alt} widths={shotWidths} sizes={shotSizes} />
+              <figcaption>
+                <b>{s.title}</b> {s.caption}
+                {s.how && <span class="how"><span>How:</span> {s.how}</span>}
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+      )}
+    </div>
+  </div>
+
+  <Fragment slot="footer-links">
+    {data.github && <a href={data.github}>{data.title} source</a>}
+    {data.github && <a href={`${data.github}/releases`}>Releases</a>}
+  </Fragment>
 </Base>
 
+<script>
+  // Shows the newest version next to the download button.
+  const el = document.getElementById('version');
+  const repo = el?.dataset.repo;
+  if (el && repo) {
+    fetch(`https://api.github.com/repos/${repo}/releases/latest`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => {
+        if (r && r.tag_name) el.textContent = 'Free · ' + r.tag_name;
+      })
+      .catch(() => {});
+  }
+</script>
+
 <style>
-  article { padding-top: 56px; }
-  /* Centred like Blimp's and Vessel's pages. */
-  header { display: grid; justify-items: center; text-align: center; gap: 14px; }
-  header img { border-radius: 12px; }
-  h1 { font-size: clamp(36px, 7vw, 56px); letter-spacing: -1px; margin: 0; }
-  .lead { color: var(--text-2); font-size: 20px; max-width: 640px; margin: 0; }
-  .chips, .actions { justify-content: center; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .shot { margin-top: 40px; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+  /* The same type, label and colour effects as Blimp's and Vessel's pages. */
+  .hero {
+    text-align: center;
+    padding: 48px 0 0;
+    background: radial-gradient(700px 360px at 50% 0, var(--glow), transparent 70%);
+  }
+  .name {
+    display: inline-flex; align-items: center; gap: 10px; margin: 0 0 20px;
+    font-weight: 700; font-size: 20px;
+  }
+  .name img { border-radius: 9px; }
+  .hero .icon { border-radius: 12px; margin: 0 auto 20px; }
+  h1 { font-size: clamp(36px, 7vw, 64px); line-height: 1.08; letter-spacing: -1.5px; margin: 0; }
+  h1 span { color: var(--accent); }
+  .lead { color: var(--text-2); font-size: clamp(17px, 2.4vw, 20px); max-width: 620px; margin: 20px auto 0; }
+  .cta { margin-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .cta small { color: var(--text-3); font-size: 14px; }
+  .cta small a { color: var(--text-2); }
+  .shot {
+    display: block; margin: 48px auto 0; width: 100%; height: auto;
+    border-radius: 12px; border: 1px solid var(--line);
+    box-shadow: var(--shadow), 0 0 0 1px rgba(var(--brand-rgb), .06);
+  }
+
   /* The text stays left-aligned, easier to read, in a column in the middle. */
-  .prose { max-width: 44rem; margin: 40px auto 0; font-size: 17px; line-height: 1.65; }
-  .shots { margin-top: 72px; display: grid; gap: 56px; }
+  .prose { max-width: 44rem; margin: 56px auto 0; font-size: 17px; line-height: 1.65; color: var(--text-2); }
+  .prose :global(strong) { color: var(--text); font-weight: 600; }
+  .prose :global(ul) { list-style: none; padding: 0; display: grid; gap: 12px; }
+  .prose :global(li) { padding-left: 26px; position: relative; }
+  .prose :global(li)::before {
+    content: ""; position: absolute; left: 0; top: .6em;
+    width: 10px; height: 10px; border-radius: 3px; background: var(--brand);
+  }
+
+  .shots { margin-top: 88px; display: grid; gap: 56px; }
   .shots h2 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -.5px; margin: 0 0 -24px; text-align: center; }
   figure { margin: 0; }
   figure .shot { margin-top: 0; }
@@ -78,4 +141,8 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
   figcaption b { color: var(--text); font-weight: 600; }
   .how { display: block; margin-top: 6px; font-size: 15px; }
   .how span { color: var(--accent); font-weight: 600; }
+
+  @media (max-width: 760px) {
+    .shots { margin-top: 64px; }
+  }
 </style>

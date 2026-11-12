@@ -10,6 +10,9 @@ const projects = defineCollection({
     z.object({
       title: z.string(),
       tagline: z.string(),
+      // The big two-part heading on its page, as on Blimp's and Vessel's: the first
+      // line in the text colour, the second in the app's own. Without it, the title.
+      headline: z.tuple([z.string(), z.string()]).optional(),
       icon: image(),
       cover: image(),
       coverAlt: z.string(),
@@ -27,6 +30,9 @@ const projects = defineCollection({
         )
         .default([]),
       platforms: z.array(z.string()),
+      // What it runs on, for the line under the download button, e.g.
+      // "Windows 10 and 11, 64-bit". Without it, the platforms.
+      requirements: z.string().optional(),
       tech: z.array(z.string()),
       github: z.string().optional(),
       // Set for apps with a Windows installer on their GitHub releases. Jeti, the
