@@ -13,6 +13,8 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { data } = project;
 const { Content } = await render(project);
+// Its installer from the newest GitHub release, for an app with one.
+const download = data.windows && data.github && `${data.github}/releases/latest/download/${data.windows.installer}`;
 ---
 
 <Base title={`${data.title}: ${data.tagline}`} description={data.tagline} image={data.cover.src} section="projects">
@@ -22,7 +24,15 @@ const { Content } = await render(project);
       <h1>{data.title}</h1>
       <p class="lead">{data.tagline}</p>
       <div class="chips">{data.platforms.map((x) => <span class="chip">{x}</span>)}</div>
-      {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
+      <div class="actions">
+        {download && (
+          <a class="btn" href={download}>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
+            Download for Windows
+          </a>
+        )}
+        {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
+      </div>
     </header>
     <Image class="shot" src={data.cover} alt={data.coverAlt} />
     <div class="prose"><Content /></div>
@@ -36,6 +46,7 @@ const { Content } = await render(project);
   h1 { font-size: clamp(36px, 7vw, 56px); letter-spacing: -1px; margin: 0; }
   .lead { color: var(--text-2); font-size: 20px; max-width: 640px; margin: 0; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .shot { margin-top: 40px; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
   .prose { max-width: 44rem; margin-top: 40px; font-size: 17px; line-height: 1.65; }
 </style>
