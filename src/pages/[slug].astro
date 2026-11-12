@@ -46,7 +46,10 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
         {data.shots.map((s) => (
           <figure>
             <Image class="shot" src={s.src} alt={s.alt} widths={shotWidths} sizes={shotSizes} />
-            <figcaption><b>{s.title}</b> {s.caption}</figcaption>
+            <figcaption>
+              <b>{s.title}</b> {s.caption}
+              {s.how && <span class="how"><span>How:</span> {s.how}</span>}
+            </figcaption>
           </figure>
         ))}
       </section>
@@ -73,4 +76,6 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
   figure .shot { margin-top: 0; }
   figcaption { color: var(--text-2); margin: 14px auto 0; max-width: 44rem; font-size: 16px; text-align: center; }
   figcaption b { color: var(--text); font-weight: 600; }
+  .how { display: block; margin-top: 6px; font-size: 15px; }
+  .how span { color: var(--accent); font-weight: 600; }
 </style>

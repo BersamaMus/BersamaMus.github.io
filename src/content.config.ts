@@ -13,7 +13,8 @@ const projects = defineCollection({
       icon: image(),
       cover: image(),
       coverAlt: z.string(),
-      // More screenshots, shown under the text, each with a heading and a line about it.
+      // More screenshots, shown under the text, each with a heading, a line about it
+      // and, optionally, how to do it in the app.
       shots: z
         .array(
           z.object({
@@ -21,6 +22,7 @@ const projects = defineCollection({
             alt: z.string(),
             title: z.string(),
             caption: z.string(),
+            how: z.string().optional(),
           }),
         )
         .default([]),
