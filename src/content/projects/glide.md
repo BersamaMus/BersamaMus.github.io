@@ -3,7 +3,7 @@ title: Glide
 tagline: A photo viewer that shows every picture on your PC, drives and phone, newest first by month.
 icon: ../../assets/glide/icon.png
 cover: ../../assets/glide/windows-home.png
-coverAlt: Glide on Windows, showing travel photos of coastlines, Venice and Rome grouped by month, with a view over the Italian coast open in the preview pane
+coverAlt: Glide on Windows, showing trips to Venice, Rome and the Italian coast grouped by month, newest first, with a photo of Capri open beside them and its date taken and camera below
 shots:
   - src: ../../assets/glide/windows-memories.png
     alt: Glide's Memories tab with photos taken on 12 November in 2023, 2021, 2019 and 2016, each year under its own heading, and a photo of Capri open beside them
@@ -16,7 +16,7 @@ shots:
     caption: Put two pictures side by side, or drag a slider across one to reveal the other. Glide tells you how far apart they were taken.
     how: Click one picture, Ctrl+click another, then choose Compare under the preview. Switch between the slider and side by side at the top right.
   - src: ../../assets/glide/windows-select.png
-    alt: Five photos ticked across two months in Glide, with 5 pictures selected, 2.0 MB, and Copy to, Move to, Delete and Collage buttons beside them
+    alt: Six photos from June 2011 ticked in Glide, a run of four and two more below, with 6 pictures selected, 2.6 MB, and Copy to, Move to, Delete and Collage buttons beside them
     title: Tidy up in one go.
     caption: Pick out pictures as you would in File Explorer, with Ctrl and Shift, then copy, move or delete them together, or turn them into a collage.
     how: Ctrl+click to add pictures one at a time, Shift+click to take a whole run of them, or press Ctrl+A for all. The buttons appear under the preview.
@@ -73,8 +73,9 @@ this day in years past.
   shown apart.
 - **The formats cameras use:** JPG, PNG, GIF, WebP, HEIC, AVIF, TIFF and RAW files
   from most cameras.
-- **Edit a copy:** crop, rotate, light and colour adjustments, and filters. You can
-  also blur or replace the background behind the subject, found on your PC.
+- **Edit:** crop, rotate, light and colour adjustments, and filters. You can also
+  blur or replace the background behind the subject, found on your PC. Save over
+  the original, or keep it and save a copy.
 - **Make something new:** cut the subject out as a sticker, put a few pictures
   together in a collage, or compare two side by side, then and now.
 - **Tidy up:** rename, copy, move, or send pictures to the Recycle Bin, one at a time
