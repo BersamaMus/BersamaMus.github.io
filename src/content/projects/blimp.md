@@ -11,6 +11,9 @@ windows:
   appId: F6B5CA3D-C1D6-43EE-8494-EEB7F8CC522B
   installer: Blimp-Setup.exe
   exe: blimp.exe
+android:
+  package: com.blimp.app
+  apk: Blimp.apk
 order: 1
 customPage: true
 ---

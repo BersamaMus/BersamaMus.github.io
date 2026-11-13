@@ -19,6 +19,9 @@ npm run build    # writes the site to dist/
    (its Inno Setup `appId`, the `installer` asset's name and its `exe`; see
    `blimp.md`). It's then listed in `/apps.json`, and Jeti, the launcher,
    offers to install and update it.
+5. If it has an APK on its GitHub releases, add an `android:` block (its
+   `package`, the applicationId, and the `apk` asset's name; see `blimp.md`).
+   It's then in the `android` list of `/apps.json`, for Jeti on Android.
 
 ## Deploying
 

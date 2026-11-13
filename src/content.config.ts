@@ -48,6 +48,16 @@ const projects = defineCollection({
           exe: z.string(),
         })
         .optional(),
+      // Set for apps with an APK on their GitHub releases. Jeti on Android lists
+      // these (from the "android" list in /apps.json) and installs and updates them.
+      android: z
+        .object({
+          // The app's applicationId. Jeti asks Android which version of it is installed.
+          package: z.string(),
+          // The release asset Jeti downloads, e.g. Blimp.apk.
+          apk: z.string(),
+        })
+        .optional(),
       // Lower numbers come first on the home page.
       order: z.number().default(100),
       // True when the project has a hand-built page in src/pages/<id>/.
