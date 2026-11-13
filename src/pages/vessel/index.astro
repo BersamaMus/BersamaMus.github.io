@@ -8,10 +8,12 @@ import windowsFolder from '../../assets/vessel/windows-folder.png';
 
 const repo = 'https://github.com/BersamaMus/Vessel';
 const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
+// The Android app, from the same release. A newer one installs over the old one and keeps its history.
+const apk = `${repo}/releases/latest/download/Vessel.apk`;
 ---
 
 <Base
-  title="Vessel: offline video player for Windows"
+  title="Vessel: offline video player for Windows and Android"
   description="Vessel plays the videos on your PC, your drives and your phone, with thumbnails, a mini player and Continue watching. No accounts, no ads, no internet."
   image={windowsHome.src}
   favicon={icon.src}
@@ -27,11 +29,17 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
           actually enjoy browsing. No accounts, no ads, no internet.
         </p>
         <div class="cta">
-          <a class="btn" href={download}>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
-            Download for Windows
-          </a>
-          <small><span id="version">Free</span> · Windows 10 and 11, 64-bit · <a href={`${repo}/releases`}>All releases</a></small>
+          <div class="buttons">
+            <a class="btn" href={download} data-platform="windows">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
+              Download for Windows
+            </a>
+            <a class="btn secondary" href={apk} data-platform="android">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.5 11.5 0 0 0 12 8.2c-1.76 0-3.42.34-4.92.94L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+              Download for Android
+            </a>
+          </div>
+          <small><span id="version">Free</span> · Windows 10 and 11, 64-bit · Android 10 and up · <a href={`${repo}/releases`}>All releases</a></small>
         </div>
         <Image class="shot" src={windowsHome} alt="Vessel on Windows, showing Continue watching, recently added videos and library folders" loading="eager" />
       </div>
@@ -70,7 +78,7 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
           <div class="feature">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6z"/></svg></div>
             <h3>Private by design</h3>
-            <p>Vessel never goes online. Your library, history and thumbnails stay on your PC.</p>
+            <p>Vessel never goes online. Your library, history and thumbnails stay on your device.</p>
           </div>
         </div>
       </div>
@@ -102,10 +110,27 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
 
     <section>
       <div class="wrap">
+        <h2>Also on Android</h2>
+        <p class="sub">The same Vessel on your phone, for the videos on its storage and SD card. Install it from here.</p>
+        <ul class="desktop">
+          <li><b>Your phone's videos</b> as a library, by folder, kept up to date</li>
+          <li><b>Continue watching</b> and Quick picks on Home</li>
+          <li><b>Mini player</b> and picture-in-picture</li>
+          <li><b>Swipe to seek</b>, double-tap to skip, turn sideways for full screen</li>
+          <li><b>Plays in the background</b>, with lock screen controls</li>
+          <li><b>Open with Vessel</b> from your file manager</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
         <h2>Under the hood</h2>
         <p class="sub">
-          Vessel is written in C++ with Qt Quick, and plays video with libmpv, the engine behind
-          mpv, so it handles just about any format. The source is <a href={repo}>on GitHub</a>.
+          Vessel for Windows is written in C++ with Qt Quick, and plays video with libmpv, the engine
+          behind mpv, so it handles just about any format. On Android it's Kotlin and Jetpack Compose,
+          playing with ExoPlayer and handing anything ExoPlayer can't play to libmpv. The source is
+          <a href={repo}>on GitHub</a>.
         </p>
       </div>
     </section>
@@ -113,14 +138,25 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
     <div class="final">
       <div class="wrap">
         <h2>Ready to watch?</h2>
-        <a class="btn" href={download}>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
-          Download for Windows
-        </a>
+        <div class="buttons">
+          <a class="btn" href={download} data-platform="windows">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
+            Download for Windows
+          </a>
+          <a class="btn secondary" href={apk} data-platform="android">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.5 11.5 0 0 0 12 8.2c-1.76 0-3.42.34-4.92.94L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+            Download for Android
+          </a>
+        </div>
         <details>
           <summary>Windows says it "protected your PC"?</summary>
           <p>That's because the installer isn't signed with a paid certificate yet, not because anything is wrong with it. Click <b>More info</b>, then <b>Run anyway</b>.</p>
           <p>To uninstall, go to <b>Settings › Apps › Installed apps</b>, find Vessel, and choose <b>Uninstall</b>.</p>
+        </details>
+        <details>
+          <summary>Installing on Android?</summary>
+          <p>Open the downloaded <b>Vessel.apk</b>. The first time, Android asks you to allow your browser to install apps: turn on <b>Allow from this source</b>, then go back and tap <b>Install</b>.</p>
+          <p>Already have Vessel? Installing a newer version updates it and keeps your history and settings. Or use <a href="/">Jeti</a>, which installs and updates it for you.</p>
         </details>
         <p class="credits">
           Videos in the screenshots: <i>Big Buck Bunny</i>, <i>Elephants Dream</i>, <i>Sintel</i> and
@@ -138,6 +174,18 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
 </Base>
 
 <script>
+  // On an Android phone, the Android download is the main button.
+  if (/Android/i.test(navigator.userAgent)) {
+    document.querySelectorAll('.buttons').forEach((group) => {
+      const android = group.querySelector('[data-platform="android"]');
+      const windows = group.querySelector('[data-platform="windows"]');
+      if (!android || !windows) return;
+      android.classList.remove('secondary');
+      windows.classList.add('secondary');
+      group.prepend(android);
+    });
+  }
+
   // Shows the newest version next to the download button.
   fetch('https://api.github.com/repos/BersamaMus/Vessel/releases/latest')
     .then((r) => (r.ok ? r.json() : null))
@@ -166,6 +214,7 @@ const download = `${repo}/releases/latest/download/Vessel-Setup.exe`;
   .lead { color: var(--text-2); font-size: clamp(17px, 2.4vw, 20px); max-width: 620px; margin: 20px auto 0; }
   .cta { margin-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .cta small { color: var(--text-3); font-size: 14px; }
+  .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   .cta small a { color: var(--text-2); }
   .shot {
     display: block; margin: 48px auto 0; width: 100%; max-width: 1000px; height: auto;
