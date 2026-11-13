@@ -1,6 +1,6 @@
 ---
 title: Glide
-tagline: A photo viewer that shows every picture on your PC, drives and phone, newest first by month.
+tagline: A photo viewer that shows every picture on your PC, drives and phone, newest first by month, on Windows and Android.
 headline: [Your photos., Every one of them.]
 icon: ../../assets/glide/icon.png
 cover: ../../assets/glide/windows-home.png
@@ -51,14 +51,17 @@ shots:
     title: Put a collage together.
     caption: Pick a few pictures and choose a layout, a shape, the spacing, the corners and a background.
     how: Select 2 to 9 pictures, then choose Collage under the preview.
-platforms: [Windows]
-requirements: Windows 10 and 11, 64-bit
-tech: [Flutter, Dart, C++, ONNX Runtime]
+platforms: [Windows, Android]
+requirements: Windows 10 and 11, 64-bit · Android 7 and up
+tech: [Flutter, Dart, C++, ONNX Runtime, Kotlin, ML Kit]
 github: https://github.com/BersamaMus/Glide
 windows:
   appId: A8021FE3-4561-40A2-AD60-6A80A307B16E
   installer: Glide-Setup.exe
   exe: glide.exe
+android:
+  package: com.bersamamus.glide
+  apk: Glide.apk
 order: 3
 accent: turquoise
 ---
@@ -82,3 +85,7 @@ this day in years past.
   together in a collage, or compare two side by side, then and now.
 - **Tidy up:** rename, copy, move, or send pictures to the Recycle Bin, one at a time
   or many at once.
+
+Glide is on Android too, for the pictures in your phone's gallery: the same months,
+Memories, editor, stickers and collages, with Share and Delete for the ones you
+pick. Edits are saved as a copy, so the original stays as it was.

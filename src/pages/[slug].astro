@@ -15,6 +15,8 @@ const { data } = project;
 const { Content } = await render(project);
 // Its installer from the newest GitHub release, for an app with one.
 const download = data.windows && data.github && `${data.github}/releases/latest/download/${data.windows.installer}`;
+// Its APK from the same release, for an app on Android too. A newer one installs over the old one.
+const apk = data.android && data.github && `${data.github}/releases/latest/download/${data.android.apk}`;
 // owner/repo, to show the newest version next to the download button.
 const repoPath = data.github?.replace('https://github.com/', '');
 // Screenshots fill the page's column (1120px less its 16px gutters), so phones
@@ -42,17 +44,30 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
         <div class="cta">
           <div class="buttons">
             {download && (
-              <a class="btn" href={download}>
+              <a class="btn" href={download} data-platform="windows">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3zM11.4 4.4 21 3v8.5h-9.6zM3 12.5h7.4v7L3 18.5zM11.4 12.5H21V21l-9.6-1.4z"/></svg>
                 Download for Windows
+              </a>
+            )}
+            {apk && (
+              <a class={download ? 'btn secondary' : 'btn'} href={apk} data-platform="android">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22A11.5 11.5 0 0 0 12 8.2c-1.76 0-3.42.34-4.92.94L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+                Download for Android
               </a>
             )}
             {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
           </div>
           <small>
-            <span id="version" data-repo={download ? repoPath : undefined}>Free</span> · {data.requirements ?? data.platforms.join(', ')}
+            <span id="version" data-repo={download || apk ? repoPath : undefined}>Free</span> · {data.requirements ?? data.platforms.join(', ')}
             {data.github && <> · <a href={`${data.github}/releases`}>All releases</a></>}
           </small>
+          {apk && (
+            <details>
+              <summary>Installing on Android?</summary>
+              <p>Open the downloaded <b>{data.android!.apk}</b>. The first time, Android asks you to allow your browser to install apps: turn on <b>Allow from this source</b>, then go back and tap <b>Install</b>.</p>
+              <p>Already have {data.title}? Installing a newer version updates it. Or use <a href="/">Jeti</a>, which installs and updates it for you.</p>
+            </details>
+          )}
         </div>
         <Image class="shot" src={data.cover} alt={data.coverAlt} widths={shotWidths} sizes={shotSizes} loading="eager" />
       </div>
@@ -84,6 +99,18 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
 </Base>
 
 <script>
+  // On an Android phone, the Android download is the main button.
+  if (/Android/i.test(navigator.userAgent)) {
+    document.querySelectorAll('.buttons').forEach((group) => {
+      const android = group.querySelector('[data-platform="android"]');
+      const windows = group.querySelector('[data-platform="windows"]');
+      if (!android || !windows) return;
+      android.classList.remove('secondary');
+      windows.classList.add('secondary');
+      group.prepend(android);
+    });
+  }
+
   // Shows the newest version next to the download button.
   const el = document.getElementById('version');
   const repo = el?.dataset.repo;
@@ -117,6 +144,9 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
   .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   .cta small { color: var(--text-3); font-size: 14px; }
   .cta small a { color: var(--text-2); }
+  .cta details { width: 100%; max-width: 560px; margin-top: 4px; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+  .cta summary { cursor: pointer; font-weight: 600; color: var(--text-2); }
+  .cta details p { color: var(--text-2); font-size: 15px; margin: 12px 0 0; }
   .shot {
     display: block; margin: 48px auto 0; width: 100%; height: auto;
     border-radius: 12px; border: 1px solid var(--line);
