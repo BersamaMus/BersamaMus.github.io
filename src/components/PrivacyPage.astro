@@ -1,0 +1,63 @@
+---
+// An app's privacy policy page: its name, the title and date, then the page's own
+// sections. Shared by Blimp, Vessel and Glide so the three read and look the same.
+import Base from '../layouts/Base.astro';
+
+interface Props {
+  // The app's name, "Blimp".
+  name: string;
+  icon: ImageMetadata;
+  // One line for search results: what the app sends, in short.
+  description: string;
+  // Under the title: "Effective 15 November 2026 · Applies to …".
+  meta: string;
+  // The app's own colour, as on its page.
+  accent?: 'yellow' | 'purple' | 'turquoise';
+}
+
+const { name, icon, description, meta, accent = 'yellow' } = Astro.props;
+const home = `/${name.toLowerCase()}`;
+---
+
+<Base title={`${name} Privacy Policy`} description={description} favicon={icon.src} section="projects">
+  <div class={`privacy-page accent-${accent}`}>
+    <header>
+      <p class="name"><img src={icon.src} alt="" width="32" height="32" />{name}</p>
+      <h1>Privacy Policy</h1>
+      <p class="meta">{meta}</p>
+    </header>
+
+    <slot />
+
+    <p class="back"><a href={home}>← Back to {name}</a></p>
+  </div>
+</Base>
+
+<style is:global>
+  /* Global, under .privacy-page, as the sections are the page's own (slotted) markup. */
+  .privacy-page {
+    max-width: 44rem; margin: 0 auto; padding: 40px 16px 0;
+    display: grid; gap: 40px; font-size: 17px; line-height: 1.65;
+  }
+  .privacy-page header { display: grid; gap: 14px; }
+  .privacy-page .name { display: flex; align-items: center; gap: 12px; margin: 0; font-weight: 700; font-size: 20px; }
+  .privacy-page .name img { border-radius: 8px; }
+  .privacy-page h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.15; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+  .privacy-page .meta { color: var(--text-2); margin: 0; font-size: 15px; }
+  .privacy-page .glance { background: var(--accent-soft); border-radius: 16px; padding: 22px 24px; display: grid; gap: 10px; }
+  .privacy-page .glance h2 { margin: 0; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .privacy-page ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+  .privacy-page section { display: grid; gap: 10px; }
+  .privacy-page section h2 { font-size: 22px; font-weight: 600; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+  .privacy-page section p { margin: 0; }
+  .privacy-page .perm { display: grid; margin: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: hidden; }
+  .privacy-page .perm div { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 16px; padding: 14px 18px; border-top: 1px solid var(--line); }
+  .privacy-page .perm div:first-child { border-top: 0; }
+  .privacy-page .perm dt { font-weight: 600; }
+  .privacy-page .perm dd { margin: 0; color: var(--text-2); }
+  .privacy-page strong { font-weight: 600; }
+  .privacy-page .back { margin: 0; }
+  @media (max-width: 560px) {
+    .privacy-page .perm div { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>

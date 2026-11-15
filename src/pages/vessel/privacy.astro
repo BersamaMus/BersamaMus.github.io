@@ -1,0 +1,93 @@
+---
+import PrivacyPage from '../../components/PrivacyPage.astro';
+import icon from '../../assets/vessel/icon.png';
+---
+
+<PrivacyPage
+  name="Vessel"
+  icon={icon}
+  accent="purple"
+  description="Vessel collects no personal data. It only goes online to check for a newer version, and to search for subtitles when you ask."
+  meta="Effective 15 November 2026 · Applies to the Vessel video player for Windows and Android"
+>
+  <div class="glance">
+    <h2>At a glance</h2>
+    <ul>
+      <li>Vessel only uses the internet for two things: asking GitHub whether a newer version is out each time it opens, which sends nothing about you or your videos, and searching for subtitles on OpenSubtitles when you ask it to.</li>
+      <li>We don't collect, store, sell or share any personal data.</li>
+      <li>Everything Vessel keeps, like your watch history, playlists and thumbnails, stays on your device.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>What Vessel does</h2>
+    <p>Vessel is a video player for the video files already on your PC, your drives and your phone. It works offline, apart from a check for new versions that you can turn off and an optional subtitle search. There are no accounts, no ads, no analytics and no third-party tracking tools in the app.</p>
+  </section>
+
+  <section>
+    <h2>On Windows: what Vessel reads</h2>
+    <dl class="perm">
+      <div><dt>Your drives</dt><dd>Vessel looks through the PC's own drives, and drives you plug in, for video files, skipping Windows' and apps' folders. It reads each video to make a thumbnail and learn its length and size. Files that are only online (OneDrive) are left alone, so they aren't downloaded.</dd></div>
+      <div><dt>Phones by cable</dt><dd>With a phone plugged in by USB and set to File transfer, Vessel lists the videos on it and plays them straight from the phone. Nothing is copied off it.</dd></div>
+      <div><dt>Media keys and controls</dt><dd>Vessel shows the video that's playing in Windows' media controls, so your keyboard's media keys can control it.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>On Android: permissions and why Vessel asks for them</h2>
+    <dl class="perm">
+      <div><dt>Videos</dt><dd>To list and play the videos on your phone and its SD card. On Android 14 and later you can allow just some of them.</dd></div>
+      <div><dt>Notifications and background playback</dt><dd>So a video's sound can keep playing with the screen off or while you use another app, with controls in the notification and on the lock screen.</dd></div>
+      <div><dt>Internet</dt><dd>For the check for a newer version and the subtitle search, described below. Nothing else uses it.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Checking for updates</h2>
+    <p>Each time Vessel opens, it asks <a href="https://github.com/BersamaMus/Vessel">GitHub</a> which version is the newest, and says so when a newer one is out. Only that question is sent: nothing about you, your device or your videos. Like any website, GitHub can see your internet address, and it handles requests under its own privacy policy. You can turn this off with <strong>Check for updates</strong> in <strong>Settings</strong>.</p>
+  </section>
+
+  <section>
+    <h2>Searching for subtitles</h2>
+    <p>Vessel only searches for subtitles online when you choose <strong>Search online</strong> in a video's subtitles menu. It then sends <a href="https://www.opensubtitles.com">OpenSubtitles</a> the title you're searching for (the video's name, which you can change first), the language you picked and, for a video on your PC or phone's storage, a fingerprint of the file: a number worked out from its size and its first and last 64 KB, which lets OpenSubtitles find subtitles made for that exact file. The video itself is never uploaded. Picking a result downloads that subtitle file.</p>
+    <p>Like any website, OpenSubtitles can see your internet address. Vessel sends no account, no watch history and no device identifier. OpenSubtitles is run independently of Vessel, and we have no control over how it handles requests. Subtitles you download are saved next to the video, or in Vessel's own folder when that isn't possible.</p>
+  </section>
+
+  <section>
+    <h2>Information stored on your device</h2>
+    <p>To work as a video player, Vessel saves a few things on your PC or phone. None of it leaves the device through Vessel:</p>
+    <ul>
+      <li>Watch history: how far you got in each video, for Continue watching</li>
+      <li>Watch stats, playlists and your recent searches</li>
+      <li>Thumbnails, and what Vessel has learned about each video (its length, size and year)</li>
+      <li>Subtitles you downloaded, and which subtitles and audio track you chose for a video</li>
+      <li>Your settings</li>
+    </ul>
+    <p>You can clear your watch history and reset your stats in the app. Uninstalling Vessel on Android deletes all of it. On Windows, uninstalling keeps your saved data in your user folder (<code>AppData\Local\Vessel</code>) in case you reinstall; you can delete it there.</p>
+  </section>
+
+  <section>
+    <h2>Device backup</h2>
+    <p>If you have turned on Android's own backup, Android may include Vessel's settings and history in your device backup. That backup is made by Android and stored in your Google account under Google's privacy policy. Vessel has no access to it. You can turn Android backup off in your phone's settings.</p>
+  </section>
+
+  <section>
+    <h2>Sharing</h2>
+    <p>When you choose to share a video on Android, Android's share menu sends the file to the app you pick. That happens only when you use it.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Vessel doesn't collect personal information from anyone, including children under 13.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the new version will be posted on this page with a new effective date. If Vessel ever starts to collect data or send anything more, this page will say exactly what and why before that version of the app is released.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about this policy can be asked by opening an issue at <a href="https://github.com/BersamaMus/Vessel/issues">github.com/BersamaMus/Vessel/issues</a>.</p>
+  </section>
+</PrivacyPage>

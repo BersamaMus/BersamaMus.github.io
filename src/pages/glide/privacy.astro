@@ -1,0 +1,88 @@
+---
+import PrivacyPage from '../../components/PrivacyPage.astro';
+import icon from '../../assets/glide/icon.png';
+---
+
+<PrivacyPage
+  name="Glide"
+  icon={icon}
+  accent="turquoise"
+  description="Glide collects no personal data. It only goes online to check for a newer version, and your pictures never leave your device."
+  meta="Effective 15 November 2026 · Applies to the Glide photo viewer for Windows and Android"
+>
+  <div class="glance">
+    <h2>At a glance</h2>
+    <ul>
+      <li>Glide only uses the internet to ask GitHub whether a newer version is out each time it opens, which sends nothing about you or your pictures. You can turn that off.</li>
+      <li>We don't collect, store, sell or share any personal data.</li>
+      <li>Your pictures are never uploaded. Editing, and finding a picture's subject, happen on your own device.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>What Glide does</h2>
+    <p>Glide is a photo viewer and editor for the pictures already on your PC, your drives and your phone. It works offline, apart from a check for new versions that you can turn off. There are no accounts, no ads, no analytics and no third-party tracking tools in the app.</p>
+  </section>
+
+  <section>
+    <h2>On Windows: what Glide reads</h2>
+    <dl class="perm">
+      <div><dt>Your pictures</dt><dd>Glide looks through your Pictures folder, the PC's drives and drives you plug in for picture files, and reads each one's date, camera details and, if it has one, where it was taken, to sort and describe it. Files that are only online (OneDrive) are left alone, so they aren't downloaded.</dd></div>
+      <div><dt>Phones by cable</dt><dd>With an Android phone plugged in by USB, Glide lists and shows the pictures on it. Nothing is copied off it unless you copy it.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>On Android: permissions and why Glide asks for them</h2>
+    <dl class="perm">
+      <div><dt>Photos</dt><dd>To show the pictures in your phone's gallery. On Android 14 and later you can allow just some of them.</dd></div>
+      <div><dt>Where photos were taken</dt><dd>To show the place a picture was taken, which Android otherwise hides from apps. It's only shown to you.</dd></div>
+      <div><dt>Internet</dt><dd>For the check for a newer version, described below. Nothing else in Glide uses it.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Checking for updates</h2>
+    <p>Each time Glide opens, it asks <a href="https://github.com/BersamaMus/Glide">GitHub</a> which version is the newest, and says so when a newer one is out. Only that question is sent: nothing about you, your device or your pictures. Like any website, GitHub can see your internet address, and it handles requests under its own privacy policy. You can turn this off with <strong>Check for updates</strong> in <strong>Settings</strong>.</p>
+  </section>
+
+  <section>
+    <h2>Finding a picture's subject</h2>
+    <p>Blurring or replacing a background, and making a sticker, need Glide to find the subject of a picture. That is worked out on your own device, and the picture is not sent anywhere. On Windows, the model that does it is installed with Glide. On Android, Glide uses Google's ML Kit through Google Play services, which downloads the model to your phone and may send Google information about how the feature performs, under <a href="https://developers.google.com/ml-kit/terms">Google's terms for ML Kit</a>. Your pictures are not part of that.</p>
+  </section>
+
+  <section>
+    <h2>Opening a place on a map</h2>
+    <p>When a picture says where it was taken, clicking those coordinates opens Google Maps in your browser at that spot. That happens only when you click, and it is then your browser's visit to Google, with the coordinates in the address.</p>
+  </section>
+
+  <section>
+    <h2>Information stored on your device</h2>
+    <p>To open quickly, Glide saves a few things on your PC or phone. None of it leaves the device through Glide:</p>
+    <ul>
+      <li>On Windows, a list of the pictures it has found and their dates, so it doesn't have to read every file again</li>
+      <li>Your settings</li>
+    </ul>
+    <p>Pictures you edit, and the stickers and collages you make, are saved as picture files on your PC on Windows, and as new pictures in your gallery on Android. Uninstalling Glide on Android deletes what it saved for itself. On Windows, uninstalling keeps it in your user folder (AppData) in case you reinstall; you can delete it there.</p>
+  </section>
+
+  <section>
+    <h2>Sharing</h2>
+    <p>When you choose to share a picture on Android, Android's share menu sends it to the app you pick. Copying a picture or a sticker puts it on your clipboard. Both happen only when you use them.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Glide doesn't collect personal information from anyone, including children under 13.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the new version will be posted on this page with a new effective date. If Glide ever starts to collect data or send anything more, this page will say exactly what and why before that version of the app is released.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about this policy can be asked by opening an issue at <a href="https://github.com/BersamaMus/Glide/issues">github.com/BersamaMus/Glide/issues</a>.</p>
+  </section>
+</PrivacyPage>

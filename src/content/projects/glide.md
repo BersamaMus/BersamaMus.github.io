@@ -64,9 +64,10 @@ android:
   apk: Glide.apk
 order: 3
 accent: turquoise
+privacy: true
 ---
 
-Glide shows the pictures already on your PC: no accounts, no ads, no internet.
+Glide shows the pictures already on your PC: no accounts, no ads, and it works offline.
 
 Open it and every picture is there, newest first and grouped by month, without
 any folders to click through. The same goes for your other drives, a USB stick,
@@ -89,3 +90,7 @@ this day in years past.
 Glide is on Android too, for the pictures in your phone's gallery: the same months,
 Memories, editor, stickers and collages, with Share and Delete for the ones you
 pick. Edits are saved as a copy, so the original stays as it was.
+
+Glide collects nothing, and your pictures never leave your device. It only goes
+online to ask GitHub whether a newer version is out when it opens, which you can
+turn off in Settings. [Privacy policy](/glide/privacy)

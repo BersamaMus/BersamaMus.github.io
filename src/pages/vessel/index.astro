@@ -14,7 +14,7 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
 
 <Base
   title="Vessel: offline video player for Windows and Android"
-  description="Vessel plays the videos on your PC, your drives and your phone, with thumbnails, a mini player and Continue watching. No accounts, no ads, no internet."
+  description="Vessel plays the videos on your PC, your drives and your phone, with thumbnails, a mini player and Continue watching. No accounts, no ads, and it works offline."
   image={windowsHome.src}
   favicon={icon.src}
   section="projects"
@@ -26,7 +26,7 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
         <h1>Your videos.<br /><span>All in one place.</span></h1>
         <p class="lead">
           Vessel turns the videos on your PC, your drives and your phone into a library you'll
-          actually enjoy browsing. No accounts, no ads, no internet.
+          actually enjoy browsing. No accounts, no ads, and it works offline.
         </p>
         <div class="cta">
           <div class="buttons">
@@ -78,7 +78,7 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
           <div class="feature">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6z"/></svg></div>
             <h3>Private by design</h3>
-            <p>Vessel never goes online. Your library, history and thumbnails stay on your device.</p>
+            <p>Your library, history and thumbnails stay on your device. Vessel only goes online to check for a newer version, or when you ask it to find subtitles. <a href="/vessel/privacy">Privacy policy</a></p>
           </div>
         </div>
       </div>
@@ -170,6 +170,7 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
   <Fragment slot="footer-links">
     <a href={repo}>Vessel source</a>
     <a href={`${repo}/releases`}>Releases</a>
+    <a href="/vessel/privacy">Vessel privacy</a>
   </Fragment>
 </Base>
 

@@ -19,4 +19,4 @@ customPage: true
 accent: purple
 ---
 
-Vessel plays the videos already on your PC, your USB drives and your phone: no accounts, no ads, no internet.
+Vessel plays the videos already on your PC, your USB drives and your phone: no accounts, no ads, and it works offline.

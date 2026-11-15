@@ -95,6 +95,7 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
   <Fragment slot="footer-links">
     {data.github && <a href={data.github}>{data.title} source</a>}
     {data.github && <a href={`${data.github}/releases`}>Releases</a>}
+    {data.privacy && <a href={`/${project.id}/privacy`}>{data.title} privacy</a>}
   </Fragment>
 </Base>
 

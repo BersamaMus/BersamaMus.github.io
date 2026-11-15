@@ -18,4 +18,4 @@ order: 1
 customPage: true
 ---
 
-Blimp plays the music already on your device: no accounts, no ads, no internet.
+Blimp plays the music already on your device: no accounts, no ads, and it works offline.

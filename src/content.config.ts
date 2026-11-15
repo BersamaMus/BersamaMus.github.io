@@ -62,6 +62,9 @@ const projects = defineCollection({
       order: z.number().default(100),
       // True when the project has a hand-built page in src/pages/<id>/.
       customPage: z.boolean().default(false),
+      // True when the project has a privacy policy at src/pages/<id>/privacy.astro,
+      // linked from the foot of its page.
+      privacy: z.boolean().default(false),
       // The app's own colour, for its card and page: the outline, the Download button
       // and the chips. The site's yellow (Blimp), Vessel's purple, or Glide's turquoise.
       accent: z.enum(['yellow', 'purple', 'turquoise']).default('yellow'),
