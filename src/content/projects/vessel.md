@@ -3,7 +3,7 @@ title: Vessel
 tagline: An offline video player that turns the videos on your PC, drives and phone into a library, on Windows and Android.
 icon: ../../assets/vessel/icon.png
 cover: ../../assets/vessel/windows-home.png
-coverAlt: Vessel on Windows, showing Continue watching, recently added videos and library folders
+coverAlt: Vessel on Windows, showing Continue watching and Quick picks, with the tabs down the side
 platforms: [Windows, Android]
 tech: [C++, Qt Quick, Kotlin, Jetpack Compose, libmpv]
 github: https://github.com/BersamaMus/Vessel
