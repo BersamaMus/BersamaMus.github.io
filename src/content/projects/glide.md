@@ -75,8 +75,11 @@ and an Android phone plugged in by cable. Memories brings back what you took on
 this day in years past.
 
 - **Every picture, by month:** dated by when it was taken, not when it was copied,
-  with the camera and its settings shown alongside. Photos and screenshots can be
-  shown apart.
+  with the camera and its settings shown alongside. Show only photos, only
+  screenshots, or only what one camera or phone took.
+- **Search:** type part of a picture's name, its folder, the camera that took
+  it, its type, or the month it was taken ("venice 2019", "nikon", "march 2021"),
+  and see only what matches, as you type. Ctrl+F on Windows.
 - **The formats cameras use:** JPG, PNG, GIF, WebP, HEIC, AVIF, TIFF and RAW files
   from most cameras.
 - **Edit:** crop, rotate, light and colour adjustments, and filters. You can also
@@ -85,7 +88,8 @@ this day in years past.
 - **Make something new:** cut the subject out as a sticker, put a few pictures
   together in a collage, or compare two side by side, then and now.
 - **Tidy up:** rename, copy, move, or send pictures to the Recycle Bin, one at a time
-  or many at once.
+  or many at once. Ctrl+C copies them to paste anywhere: into a folder, an email or
+  a chat, or (one picture) into Paint or a document.
 
 Glide is on Android too, for the pictures in your phone's gallery: the same months,
 Memories, editor, stickers and collages, with Share and Delete for the ones you
