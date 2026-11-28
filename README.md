@@ -27,3 +27,7 @@ npm run build    # writes the site to dist/
 
 Every push to `main` builds the site and publishes it to GitHub Pages
 (`.github/workflows/deploy.yml`). `public/CNAME` points it at bersamamus.com.
+
+## Licence
+
+The site is free software, released under the [GNU General Public License v3.0](LICENSE): you may use, change and share it, as long as what you share stays under the same licence. Some of the apps' screenshots show other people's music, album covers and films, which keep their own Creative Commons licences; each app's page credits them.
