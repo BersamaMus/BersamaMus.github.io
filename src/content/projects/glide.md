@@ -72,7 +72,8 @@ Glide shows the pictures already on your PC: no accounts, no ads, and it works o
 Open it and every picture is there, newest first and grouped by month, without
 any folders to click through. The same goes for your other drives, a USB stick,
 and an Android phone plugged in by cable. Memories brings back what you took on
-this day in years past.
+this day in years past, and Albums gathers what the camera took, your screenshots,
+and what came from WhatsApp, Telegram and other apps.
 
 - **Every picture, by month:** dated by when it was taken, not when it was copied,
   with the camera and its settings shown alongside. Show only photos, only
@@ -80,6 +81,14 @@ this day in years past.
 - **Search:** type part of a picture's name, its folder, the camera that took
   it, its type, or the month it was taken ("venice 2019", "nikon", "march 2021"),
   and see only what matches, as you type. Ctrl+F on Windows.
+- **Favourites:** mark pictures with a heart (or press F on Windows) and find
+  them all together on the Favourites tab, wherever they are. A favourite stays
+  one when you rename or move it.
+- **Albums:** the camera's photos, screenshots, downloads, and what came from
+  WhatsApp, Telegram, Instagram, Messenger and other apps, each a click away.
+  Still no folders to click through.
+- **Scroll by date:** drag the scroller down the side to get anywhere in years
+  of pictures quickly, with the month shown as you go.
 - **The formats cameras use:** JPG, PNG, GIF, WebP, HEIC, AVIF, TIFF and RAW files
   from most cameras.
 - **Edit:** crop, rotate, light and colour adjustments, and filters. You can also
@@ -92,8 +101,8 @@ this day in years past.
   a chat, or (one picture) into Paint or a document.
 
 Glide is on Android too, for the pictures in your phone's gallery: the same months,
-Memories, editor, stickers and collages, with Share and Delete for the ones you
-pick. Edits are saved as a copy, so the original stays as it was.
+Favourites, Albums, Memories, editor, stickers and collages, with Share and Delete
+for the ones you pick. Edits are saved as a copy, so the original stays as it was.
 
 Glide collects nothing, and your pictures never leave your device. It only goes
 online to ask GitHub whether a newer version is out when it opens, which you can
