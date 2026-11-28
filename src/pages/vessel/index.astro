@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import icon from '../../assets/vessel/icon.png';
-import windowsHome from '../../assets/vessel/windows-home.png';
+import windowsVideos from '../../assets/vessel/windows-videos.png';
 import windowsWatch from '../../assets/vessel/windows-watch.png';
 import windowsFolder from '../../assets/vessel/windows-folder.png';
 
@@ -14,8 +14,8 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
 
 <Base
   title="Vessel: offline video player for Windows and Android"
-  description="Vessel plays the videos on your PC, your drives and your phone, with thumbnails, a mini player and Continue watching. No accounts, no ads, and it works offline."
-  image={windowsHome.src}
+  description="Vessel plays the videos on your PC, your drives and your phone, with thumbnails, a mini player and a watch history. No accounts, no ads, and it works offline."
+  image={windowsVideos.src}
   favicon={icon.src}
   section="projects"
 >
@@ -41,14 +41,14 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
           </div>
           <small><span id="version">Free</span> · Windows 10 and 11, 64-bit · Android 10 and up · <a href={`${repo}/releases`}>All releases</a></small>
         </div>
-        <Image class="shot" src={windowsHome} alt="Vessel on Windows, showing Continue watching and Quick picks, with the tabs down the side" loading="eager" />
+        <Image class="shot" src={windowsVideos} alt="Vessel on Windows, showing the Videos tab with every video newest first, each with its date, time left and path" loading="eager" />
       </div>
     </div>
 
     <section>
       <div class="wrap">
         <h2>A library, not a file list</h2>
-        <p class="sub">Vessel finds the videos in your Videos folder and keeps up as you add more.</p>
+        <p class="sub">Vessel finds the videos on your PC and keeps up as you add more.</p>
         <div class="features">
           <div class="feature">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
@@ -57,8 +57,8 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
           </div>
           <div class="feature">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <h3>Continue watching</h3>
-            <p>Pick up where you left off, from Home or any folder. Finished videos are marked as watched.</p>
+            <h3>Pick up where you left off</h3>
+            <p>Every video shows how much is left, and History lists what you've watched, by day. Finished videos are marked as watched.</p>
           </div>
           <div class="feature">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
@@ -115,7 +115,7 @@ const apk = `${repo}/releases/latest/download/Vessel.apk`;
         <p class="sub">The same Vessel on your phone, with the same features, for the videos on its storage and SD card. Install it from here.</p>
         <ul class="desktop">
           <li><b>Your phone's videos</b> as a library, by folder, kept up to date</li>
-          <li><b>Continue watching</b> and Quick picks on Home</li>
+          <li><b>Every video, newest first</b>, by date or by folder, and a History tab</li>
           <li><b>Mini player</b> and picture-in-picture</li>
           <li><b>Swipe to seek</b>, double-tap to skip, turn sideways for full screen</li>
           <li><b>Plays in the background</b>, with lock screen controls</li>
