@@ -1,0 +1,80 @@
+---
+import PrivacyPage from '../../components/PrivacyPage.astro';
+import icon from '../../assets/jeti/icon.png';
+---
+
+<PrivacyPage
+  name="Jeti"
+  icon={icon}
+  accent="green"
+  description="Jeti collects no personal data. It only goes online to find the apps it offers, see which versions are newest, and download the ones you install."
+  meta="Effective 28 November 2026 · Applies to Jeti, the launcher, for Windows and Android"
+>
+  <div class="glance">
+    <h2>At a glance</h2>
+    <ul>
+      <li>Jeti goes online to read the list of apps on this website, to ask GitHub which version of each app (and of Jeti) is the newest, and to download an app when you install or update it. None of that sends anything about you.</li>
+      <li>We don't collect, store, sell or share any personal data.</li>
+      <li>Jeti only looks at which BersamaMus apps are installed and which versions they are. It doesn't look inside them, or at anything else on your device.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>What Jeti does</h2>
+    <p>Jeti installs and updates the BersamaMus apps, Blimp, Glide and Vessel, on your PC or phone, and tells you when there's a newer version of one. There are no accounts, no ads, no analytics and no third-party tracking tools in the app.</p>
+  </section>
+
+  <section>
+    <h2>What Jeti sends, and where</h2>
+    <dl class="perm">
+      <div><dt>The list of apps</dt><dd>Each time it opens, and when you refresh, Jeti downloads the list of apps, and their icons, from <a href="/apps.json">bersamamus.com/apps.json</a>. The last list is kept, for when the site can't be reached.</dd></div>
+      <div><dt>The newest versions</dt><dd>For each app in the list, and for Jeti itself, Jeti asks <a href="https://github.com/BersamaMus">GitHub</a> which version is the newest. Only that question is sent: not which apps you have or which versions they are.</dd></div>
+      <div><dt>Downloads</dt><dd>When you install or update an app, Jeti downloads its installer or APK from that app's release on GitHub, and checks it against the fingerprint GitHub lists for it before using it.</dd></div>
+    </dl>
+    <p>Like any website, this site and GitHub can see your internet address. GitHub handles requests under its own privacy policy. This website keeps no record of who downloads the list.</p>
+  </section>
+
+  <section>
+    <h2>On Windows: what Jeti reads and does</h2>
+    <dl class="perm">
+      <div><dt>Installed apps</dt><dd>Jeti reads the version Windows recorded when each BersamaMus app was installed, to know whether it's out of date.</dd></div>
+      <div><dt>Running apps</dt><dd>Before updating an app, Jeti closes it if it's open, asking you first, and opens it again afterwards.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>On Android: permissions and why Jeti asks for them</h2>
+    <dl class="perm">
+      <div><dt>Internet</dt><dd>For the list of apps, the version checks and the downloads, described above.</dd></div>
+      <div><dt>Install apps</dt><dd>To hand an app it downloaded to Android's installer, which asks you to confirm. Android asks you once to let Jeti do this.</dd></div>
+      <div><dt>Remove apps</dt><dd>For Uninstall, when you choose it. Android asks you to confirm.</dd></div>
+      <div><dt>Seeing other apps</dt><dd>To know which BersamaMus apps are installed, and which version, and to open them. Jeti does nothing with the other apps on your phone.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Information stored on your device</h2>
+    <p>Jeti saves a few things on your PC or phone. None of it leaves the device through Jeti:</p>
+    <ul>
+      <li>The last list of apps and their icons, so they show offline</li>
+      <li>Installers and APKs while they're being installed, in a temporary folder</li>
+      <li>On Windows, the window's size and position</li>
+    </ul>
+    <p>Uninstalling Jeti on Android deletes all of it. On Windows, uninstalling keeps the list and icons in your user folder (AppData), and the window's size in your user settings, in case you reinstall; you can delete the folder. Uninstalling Jeti never removes the apps it installed.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Jeti doesn't collect personal information from anyone, including children under 13.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the new version will be posted on this page with a new effective date. If Jeti ever starts to collect data or send anything more, this page will say exactly what and why before that version of the app is released.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about this policy can be asked by opening an issue at <a href="https://github.com/BersamaMus/Jeti/issues">github.com/BersamaMus/Jeti/issues</a>.</p>
+  </section>
+</PrivacyPage>

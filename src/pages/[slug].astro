@@ -55,7 +55,8 @@ const shotSizes = '(max-width: 1120px) calc(100vw - 32px), 1088px';
                 Download for Android
               </a>
             )}
-            {data.github && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
+            {/* Apps with downloads link their source in the footer, as Blimp's and Vessel's pages do. */}
+            {data.github && !download && !apk && <a class="btn secondary" href={data.github}>Source on GitHub</a>}
           </div>
           <small>
             <span id="version" data-repo={download || apk ? repoPath : undefined}>Free</span> · {data.requirements ?? data.platforms.join(', ')}

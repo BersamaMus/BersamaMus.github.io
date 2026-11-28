@@ -41,7 +41,7 @@ const apk = `${repo}/releases/latest/download/Blimp.apk`;
             Download for Android
           </a>
         </div>
-        <small><span id="version">Free</span> · Windows 10 and 11, 64-bit · Android 7.0 and up · <a href={`${repo}/releases`}>All releases</a>{links.support && <> · <a href={links.support}>Support Blimp</a></>}</small>
+        <small><span id="version">Free</span> · Windows 10 and 11, 64-bit · Android 7 and up · <a href={`${repo}/releases`}>All releases</a>{links.support && <> · <a href={links.support}>Support Blimp</a></>}</small>
       </div>
       <Image class="shot" src={windowsHome} alt="Blimp on Windows, showing Quick picks, recently played albums and the player bar" loading="eager" />
     </div>
@@ -60,22 +60,22 @@ const apk = `${repo}/releases/latest/download/Blimp.apk`;
         <div class="feature">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg></div>
           <h3>Synced lyrics</h3>
-          <p>Lines light up as they're sung. Read from your files' tags or <code>.lrc</code> files beside them.</p>
+          <p>Lines light up as they're sung, with a Karaoke mode. Read from your files' tags or <code>.lrc</code> files beside them, or found on LRCLIB when you ask.</p>
         </div>
         <div class="feature">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h2l2-6 3 12 3-9 2 6 2-3h4"/></svg></div>
           <h3>Sounds right</h3>
-          <p>Hi-res badges, volume normalisation, smooth fades between songs and a waveform seek bar.</p>
+          <p>Gapless playback, an equalizer, hi-res badges, volume normalisation, fades that follow the music and a waveform seek bar.</p>
         </div>
         <div class="feature">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
           <h3>Your library, your way</h3>
-          <p>Songs, albums, artists, genres and folders. Albums sorted into Albums, EPs and Singles. Search that ignores accents.</p>
+          <p>Songs, albums, artists, genres and folders, smart playlists that fill themselves, tag editing and a duplicate finder. Back it all up to one file.</p>
         </div>
         <div class="feature">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
           <h3>Listening stats</h3>
-          <p>Your top songs, artists and genres, and how much you listened today, this week or ever.</p>
+          <p>Your top songs, artists and genres, how much you listened today, this week or ever, streaks, badges and your top songs of each year.</p>
         </div>
         <div class="feature">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6z"/></svg></div>
@@ -96,6 +96,7 @@ const apk = `${repo}/releases/latest/download/Blimp.apk`;
         <li><b>Pauses</b> when your headphones are unplugged</li>
         <li><b>Sortable song table</b> for big libraries</li>
         <li><b>Remembers</b> its size and place on screen</li>
+        <li><b>Finds missing tags</b> and covers, when you ask</li>
         <li><b>Shortcuts:</b> <kbd>Space</kbd> play, <kbd>Ctrl</kbd>+<kbd>←</kbd>/<kbd>→</kbd> skip, <kbd>Ctrl</kbd>+<kbd>F</kbd> search</li>
       </ul>
       <Image class="shot" src={windowsPlayer} alt="Blimp's now playing screen on Windows, with the album cover, waveform seek bar and controls" />
@@ -105,7 +106,7 @@ const apk = `${repo}/releases/latest/download/Blimp.apk`;
   <section>
     <div class="wrap android">
       <div>
-        <span class="chip">Android 7.0 and up</span>
+        <span class="chip">Android 7 and up</span>
         <h2>Also on Android</h2>
         <p class="sub">The same Blimp on your phone, with Android Auto, home screen widgets, lock screen controls and a sleep timer. Install it from here now; it's coming to Google Play too.</p>
         <a class="btn" href={apk}>

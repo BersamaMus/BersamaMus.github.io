@@ -11,6 +11,21 @@ shots:
     title: On this day, years ago.
     caption: Memories brings back the pictures you took on today's date in years past, a year at a time, from Venice three years ago to a drive in the country ten years ago.
     how: Open the Memories tab on the left. Click a picture to see it bigger.
+  - src: ../../assets/glide/windows-favourites.png
+    alt: Glide's Favourites tab with twenty photos marked with a heart, from Venice in November 2023 back to Rome in June 2011, and a gondola photo open beside them with a filled heart above it
+    title: Keep your favourites together.
+    caption: Mark the pictures you love with a heart and find them all on one tab, from the camera's folder, a WhatsApp chat or anywhere else. They stay favourites when you rename or move them.
+    how: Click a picture, then the heart above the preview (or press F). Open the Favourites tab on the left to see them all.
+  - src: ../../assets/glide/windows-albums.png
+    alt: Glide's Albums tab showing the WhatsApp album, photos of Rome from June 2011, with chips for Camera, Screenshots, Downloads, WhatsApp, Telegram and Instagram above them and a pot of pink hydrangeas open beside them
+    title: Albums, sorted for you.
+    caption: What the camera took, your screenshots and downloads, and what came from WhatsApp, Telegram, Instagram and other apps, each a click away. Glide sorts them by where they came from, so there are still no folders to click through.
+    how: Open the Albums tab on the left, then pick an album from the chips at the top.
+  - src: ../../assets/glide/windows-scroll.png
+    alt: The scroller down the side of Glide's grid being dragged, with December 2011 shown beside it, over photos from July and June 2011
+    title: Get anywhere by date.
+    caption: Drag the scroller down the side to go through years of pictures in a moment. The month shows beside it as you go, so you know when to stop.
+    how: Drag the bar at the right of the pictures. Scrolling shows the month too.
   - src: ../../assets/glide/windows-compare.png
     alt: Two photos of the same Venice canal side by side, labelled Then, 4 Aug 2013, and Now, 12 Nov 2023, under the heading 10 years apart
     title: Then and now.
